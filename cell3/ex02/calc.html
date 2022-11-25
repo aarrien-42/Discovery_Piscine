@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+		</style>
+	</head>
+	<body onload="setInterval('timeAlert()',30000);">
+		<form>
+			<input type="text" min="0" id="n1" placeholder="0">
+			<select id="operation">
+				<option>+</option>
+				<option>-</option>
+				<option>*</option>
+				<option>/</option>
+				<option>%</option>
+			</select>
+			<input type="text" min="0" id="n2" placeholder="0">
+			<input type="submit" value="Try me !" onclick="calculate()">
+		</form>
+	</body>
+	<script>
+		function timeAlert() {
+			alert("Please, use me...");
+		}
+		function checkInput(n1, n2) {
+			if (n1 < 0 || n2 < 0 || n1 == "" || n2 == "")
+				return 1;
+			var filtro = '0123456789';
+			for (var i=0; i<n1.length; i++)
+				if (filtro.indexOf(n1.charAt(i)) == -1)
+					return 1;
+			for (var i=0; i<n2.length; i++)
+				if (filtro.indexOf(n2.charAt(i)) == -1)
+					return 1;
+			return 0;
+		}
+		function calculate() {
+			var num1 = document.getElementById("n1").value;
+			var num2 = document.getElementById("n2").value;
+			var operator = document.getElementById("operation").value;
+			var res;
+			if (checkInput(num1, num2) == 1){
+				console.log("Error :(");
+				alert("Error :(");
+			} else {
+				switch (operator) {
+					case '+':
+						res = parseFloat(num1) + parseFloat(num2);
+					break;
+					case '-':
+						res = num1 - num2;
+					break;
+					case '*':
+						res = num1 * num2;
+					break;
+					case '/':
+						if (num2 == 0)
+							res = "It's over 9000!";
+						else
+							res = num1 / num2;
+					break;
+					case '%':
+						if (num2 == 0)
+							res = "It's over 9000!";
+						else
+							res = num1 % num2;
+					break;
+				}
+				console.log(res);
+				alert(res);
+			}
+		}
+	</script>
+</html>

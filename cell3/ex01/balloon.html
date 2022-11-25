@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			div{
+				height: 200px;
+				width: 200px;
+				background-color: red;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="globo" onclick="incrementSize(), changeColor(0)" onmouseout="decrementSize()"></div>
+	</body>
+	<script>
+		function incrementSize() {
+			var globo = document.getElementById("globo");
+			if (globo.offsetWidth >= 415 || globo.offsetHeight >= 415) {
+				globo.style.width = "200px";
+				globo.style.height = "200px";
+			} else {
+				globo.style.width = globo.offsetWidth + 10 + 'px';
+				globo.style.height = globo.offsetHeight + 10 + 'px';
+			}
+		}
+		function changeColor(i) { /* i = 0 => rgb & i = 1 => bgr */
+			var globo = document.getElementById("globo");
+			var color = window.getComputedStyle(globo).backgroundColor;
+			console.log("Color = ", color);
+			switch (color) {
+				case 'rgb(255, 0, 0)': /*red*/
+					if (i == 0)
+						globo.style.background="green";
+					else
+						globo.style.background="blue";
+					break;
+				case 'rgb(0, 128, 0)': /*green*/
+					if (i == 0)
+						globo.style.background="blue";
+					else
+						globo.style.background="red";
+					break;
+				case 'rgb(0, 0, 255)': /*blue*/
+					if (i == 0)
+						globo.style.background="red";
+					else
+						globo.style.background="green";
+					break;
+			}
+		}
+		function decrementSize() {
+			var globo = document.getElementById("globo");
+			console.log("Size = ", globo.offsetWidth);
+			if (globo.offsetWidth > 200 || globo.offsetHeight > 200) {
+				globo.style.width = globo.offsetWidth + -5 + 'px';
+				globo.style.height = globo.offsetHeight + -5 + 'px';
+				changeColor(1);
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,79 @@
+.back{
+	background-color: whitesmoke;
+}
+
+.hamburger{
+	height: 50px;
+	width: 50px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.line{
+	position:absolute;
+	height: 6px;
+	width: 35px;
+	background: black;
+	transition: all 0.3s ease-in-out;
+}
+
+.line::before{
+	content: '';
+	position: absolute;
+	height: 6px;
+	width: 35px;
+	background-color: black;
+	top: -10px;
+	transition: all 0.3s ease-in-out;
+}
+
+.line::after{
+	content: '';
+	position: absolute;
+	height: 6px;
+	width: 35px;
+	background-color: black;
+	top: 10px;
+	transition: all 0.3s ease-in-out;
+}
+
+#toggle:checked + label .line{
+	transform: rotate(45deg);
+}
+
+#toggle:checked + label .line::before{
+	transform: rotate(-90deg) translateX(-10px);
+}
+
+#toggle:checked + label .line::after{
+	opacity: 0;
+}
+
+nav{
+	background: gold;
+	width: 300px;
+	position: absolute;
+	top: 60px;
+	left: -100vw;
+	transition: left 0.3s ease;
+}
+
+#toggle:checked ~ nav{
+	left: 0;
+}
+
+ul{
+	list-style-type: none;
+}
+
+li{
+	margin-bottom: 20px;
+	font-size: 35px;
+	cursor: pointer;
+}
+
+.option:hover {
+	color: white;
+}
