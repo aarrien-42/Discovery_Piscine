@@ -4,19 +4,25 @@
 		<meta charset="UTF-8">
 		<style>
 			div {
-				border: 1px solid black;
-				height: 300px;
-				width: 200px;
+				border: 2px solid black;
+				height: 350px;
+				width: 400px;
 			}
 			button {
 				margin-bottom:10px;
 			}
+			.tarea {
+				border: 2px solid red;
+				height: auto;
+				width: 394px;
+				margin: 1px;
+				cursor: pointer;
+			}
 		</style>
 	</head>
-	<body onload="prueba()">
-		<button>New</button>
-		<div id="ft_list">
-		</div>
+	<body>
+		<button onclick="createToDo()">New</button>
+		<div id="ft_list"></div>
 	</body>
 	<script src="todo.js"></script>
 </html>
